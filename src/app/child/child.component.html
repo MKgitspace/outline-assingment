@@ -1,0 +1,4 @@
+<div class="child-container" [fxFlex]="inputFromParent.money | flex"  >
+    <p>Name: {{inputFromParent.name}},  <span>Money: {{inputFromParent.money}}</span></p>
+    <button style="background-color: rgba(5, 166, 22, 0.637);border: none; box-shadow: 2px 2px 4px black;" (click)="getMoney()">GetMoney</button>
+</div>

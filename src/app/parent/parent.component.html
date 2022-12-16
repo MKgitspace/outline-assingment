@@ -1,0 +1,22 @@
+<p>Parent Component</p>
+<div style="display: flex;">
+      <p class="m-0" >Row <input checked type="radio" id="row" name="row" value="row" (change)="layout('row')"></p>
+      <p class="m-0">Column <input type="radio" id="column" name="row" value="column" (change)="layout('column')"></p>
+</div>
+<div style="display: flex;">
+    Send Mone:
+      <p class="m-0" > <input checked type="radio"  name="option" value="All" (change)="sentByService('All','send')">All</p>
+      <p class="m-0" style="padding: 2px;" *ngFor="let user of list"> <input type="radio"  name="option" value="user.name" (change)="sentByService(user.name,'send')">{{user.name}}</p>
+</div>
+<div style="display: flex;">
+    Get Money:
+      <p class="m-0" > <input checked type="radio"  name="option" value="All" (change)="sentByService('All','get')">All</p>
+      <p class="m-0" style="padding: 2px;" *ngFor="let user of list"> <input type="radio"  name="option" value="user.name" (change)="sentByService(user.name,'get')">{{user.name}}</p>
+</div>
+<div [fxLayout]="layoutValue" fxLayoutAlign="start start">
+        <div class="w-100" *ngFor="let item of list; let i=index" >
+                <app-child [inputFromParent]="item" (requestFromChild)="sendToChild($event)" ></app-child>
+            <button class="spc-4px" (click)="SendMoney(item,i)">SendMoneyTo{{item.name}}</button>
+            <button class="spc-4px" style="background-color: red;" (click)="GetMoney(item,i)">GetMoneyTo{{item.name}}</button>
+    </div>
+</div>
